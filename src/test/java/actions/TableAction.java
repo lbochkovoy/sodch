@@ -9,6 +9,7 @@ public class TableAction {
 
     public static void enterToKusp( Kusp kusp)
     {
-        locators.TableLocator.findInColumn( "КУСП", kusp.number() ).doubleClick();
+        SelenideElement columnElement = locators.TableLocator.findInColumn( "КУСП", kusp.number() );
+        columnElement.doubleClick();
     }
 }

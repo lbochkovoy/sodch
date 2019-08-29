@@ -5,9 +5,11 @@ import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
 
 import java.util.HashMap;
+import java.util.Iterator;
 
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selenide.$$x;
+import static com.codeborne.selenide.Selenide.$x;
 
 public class TableLocator {
 
@@ -38,6 +40,28 @@ public class TableLocator {
         ElementsCollection fields = locators.TableLocator.fieldsOfColumn( nameOfColumn );
         SelenideElement field = fields.find( text(value) );
         return field;
+    }
+
+    public static SelenideElement element( int rowIndex, int columnIndex )
+    {
+        return $x("//table["+(rowIndex+1)+"]//td["+(columnIndex+1)+"]");
+    }
+
+    public static HashMap< String, SelenideElement > row( int rowIndex )
+    {
+        HashMap< String, SelenideElement > result = new HashMap<>();
+        ElementsCollection columns = visibleColumns();
+
+        for( int columnIndex=0; columnIndex<columns.size(); columnIndex++)
+        {
+            SelenideElement currentColumn = columns.get( columnIndex );
+            String nameOfColumn = currentColumn.getValue();
+            SelenideElement currentValue = element( rowIndex, columnIndex );
+
+            result.put( nameOfColumn, currentValue );
+        }
+
+        return result;
     }
 
 }

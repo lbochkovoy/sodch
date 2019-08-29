@@ -3,14 +3,16 @@ package tests;
 import actions.MainToolboxAction;
 import com.codeborne.selenide.Configuration;
 import objects.Kusp;
+import org.jetbrains.annotations.NotNull;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 
-import java.util.Arrays;
-import java.util.Collection;
+import java.io.*;
+import java.nio.charset.Charset;
+import java.util.*;
 
 import static com.codeborne.selenide.CollectionCondition.texts;
 import static com.codeborne.selenide.Selenide.*;
@@ -18,33 +20,49 @@ import static com.codeborne.selenide.Selenide.*;
 @RunWith(Parameterized.class)
 public class TestClass {
 
+
     @Parameterized.Parameters
     public static Collection<Object[]> data()
     {
-        Object[][] dataArrays = {
-                { "operalex", "operalex", Kusp.generateKusp() }
-        };
+        ArrayList< Kusp > kusps = ParamsSetter.getKusps();
+        String[] testData = ParamsSetter.getTestParams("test2");
 
-        Collection< Object[] > result = Arrays.asList( dataArrays );
+        String login = testData[0];
+        String password = testData[1];
+        String url = testData[2];
+
+        ArrayList< Object[] > dataList = new ArrayList<Object[]>();
+
+        ListIterator< Kusp > kuspsIter = kusps.listIterator();
+        while ( kuspsIter.hasNext() )
+        {
+            Kusp currentKusp = kuspsIter.next();
+            Object[] objects = { login, password, currentKusp, url};
+            dataList.add( objects );
+        }
+
+        Collection< Object[] > result = dataList;
         return result;
-    }
-
-    @Before
-    public void setConfigurations()
-    {
-        Configuration.timeout = 30000;
-        open("http://192.168.238.237:10004/mvd/#backdoor" );
     }
 
     private String login;
     private String password;
     private Kusp   kusp;
+    private String url;
 
-    public TestClass( String login, String password, Kusp kusp )
+    @Before
+    public void setConfigurations()
+    {
+        Configuration.timeout = 30000;
+        open( url );
+    }
+
+    public TestClass( String login, String password, Kusp kusp, String url )
     {
         this.login = login;
         this.password = password;
         this.kusp = kusp;
+        this.url = url;
     }
 
     @Test
