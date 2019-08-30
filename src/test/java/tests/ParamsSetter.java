@@ -12,14 +12,20 @@ import java.util.Collection;
 import java.util.Properties;
 
 public class ParamsSetter {
+
+
+    //todo каждому запущенному тесту(в т.ч и параметризованному) сделай название с помощью библиотеки allure или junit
+    //todo методы которые готовят данные не должны быть в тестах.
     public static String[] getTestParams( String environmentName ){
         String fileName = "src\\main\\resources\\"+environmentName+".properties";
 
+        //todo создал лишние экземпляры. Присваивай сразу значения пропертей здесь
         String login = new String();
         String password = new String();
         String url = new String();
 
         Properties prop = new Properties();
+        //todo трайкеч в тесте быть не должно. Выноси в экшны и используй там.
         try (InputStream testParams = new FileInputStream("src\\main\\resources\\test2.properties")) {
             prop.load(new InputStreamReader( testParams, Charset.forName("UTF-8")));
 
@@ -38,10 +44,37 @@ public class ParamsSetter {
 
     }
 
+    //todo Аналогично с первым методом. В тестах этого быть не должно, переноси в экшны
     public static ArrayList< Kusp > getKusps() {
         ArrayList<Kusp> kusps = new ArrayList<Kusp>();
 
+        //todo используй пропертя универсально. Пример приведу ниже. По аналогии вынеси в отдельный класс
+//        public class Property {
+//
+//
+//            public static final String stand = "pre";
+//
+//            private static Properties properties;
+//
+//            private static void ReadProperty () throws IOException {
+//                properties  = new Properties();
+//                File prop = new File("src/main/resources/"+stand+".property");
+//                FileReader obj = new FileReader(prop);
+//                properties.load(obj);
+//
+//            }
+//
+//            public String getObjectFromProperty (String Data) throws IOException {
+//                ReadProperty ();
+//                String data = properties.getProperty(Data);
+//                return data;
+//            }
+//
+//
+//        }
+
         Properties propertiesMaster = new Properties();
+        //todo одного слеша в указании путя к файлу достаточно
         try (InputStream kuspStream = new FileInputStream("src\\main\\resources\\kusp.properties")) {
             propertiesMaster.load(new InputStreamReader(kuspStream, Charset.forName("UTF-8")));
 

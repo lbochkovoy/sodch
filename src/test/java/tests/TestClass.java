@@ -20,7 +20,9 @@ import static com.codeborne.selenide.Selenide.*;
 @RunWith(Parameterized.class)
 public class TestClass {
 
-
+    //todo назови сценарий адекватно, чтобы из названия можно было понять что в нём происходит
+    //todo при коммите обязательно пиши, что ты сделал и для чего. Коротко, иначе сам запутаешься
+    //todo каждый метод распиши что делает через аннотацию Step () в библиотеке allure. Не используй Allure2
     @Parameterized.Parameters
     public static Collection<Object[]> data()
     {
@@ -51,6 +53,7 @@ public class TestClass {
     private String url;
 
     @Before
+
     public void setConfigurations()
     {
         Configuration.timeout = 30000;

@@ -47,6 +47,7 @@ public class VisibilityChecker {
         locators.MainToolboxLocator.mainToolbox().shouldNotBe( Condition.visible );
     }
 
+
     public static void checkSummaryFormVisibility( )
     {
         locators.SummaryFormLocator.numberField().shouldBe( Condition.visible );
