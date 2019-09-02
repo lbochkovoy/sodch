@@ -22,9 +22,9 @@ public class KuspFormAction {
         locators.KuspFormLocator.complainantSNameField( ).setValue( sName );
     }
 
-    public static void setPlot( String plot )
+    public static void setFabula( String fabula )
     {
-        locators.KuspFormLocator.plotField().setValue( plot );
+        locators.KuspFormLocator.fabulaField().setValue( fabula );
     }
 
     public static String setFormOfApplication( String form )
@@ -74,12 +74,12 @@ public class KuspFormAction {
 
         SelenideElement numberField = locators.KuspFormLocator.numberField();
         SelenideElement lNameField = locators.KuspFormLocator.complainantSNameField();
-        SelenideElement plotField = locators.KuspFormLocator.plotField();
+        SelenideElement fabulaField = locators.KuspFormLocator.fabulaField();
         SelenideElement applicationField = locators.KuspFormLocator.formOfApplicationField();
 
         checkField( numberField, kusp.number() );
         checkField( lNameField, kusp.lastName());
-        checkField( plotField, kusp.plot() );
+        checkField( fabulaField, kusp.fabula() );
         checkField( applicationField, kusp.applicationForm() );
     }
 

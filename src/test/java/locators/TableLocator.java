@@ -47,21 +47,4 @@ public class TableLocator {
         return $x("//table["+(rowIndex+1)+"]//td["+(columnIndex+1)+"]");
     }
 
-    public static HashMap< String, SelenideElement > row( int rowIndex )
-    {
-        HashMap< String, SelenideElement > result = new HashMap<>();
-        ElementsCollection columns = visibleColumns();
-
-        for( int columnIndex=0; columnIndex<columns.size(); columnIndex++)
-        {
-            SelenideElement currentColumn = columns.get( columnIndex );
-            String nameOfColumn = currentColumn.getValue();
-            SelenideElement currentValue = element( rowIndex, columnIndex );
-
-            result.put( nameOfColumn, currentValue );
-        }
-
-        return result;
-    }
-
 }

@@ -6,7 +6,7 @@ import static com.codeborne.selenide.Selenide.$x;
 
 public class SummaryFormLocator {
 
-    public static SelenideElement plotTextareaField( )
+    public static SelenideElement fabulaTextareaField( )
     {
         String xpath = ".//div[.='Фабула:']//textarea";
         SelenideElement field = $x( xpath );
@@ -92,5 +92,10 @@ public class SummaryFormLocator {
         SelenideElement field = $x( xpath );
 
         return field;
+    }
+
+    public static SelenideElement menuOnToolbar( String menuName )
+    {
+        return $x(".//div[contains( @id, 'tabbar' )]//span[text()='"+menuName+"']");
     }
 }

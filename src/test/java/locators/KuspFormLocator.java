@@ -29,7 +29,7 @@ public class KuspFormLocator {
         return $x(".//input[ @placeholder='Форма поступления' ]");
     }
 
-    public static SelenideElement plotField( )
+    public static SelenideElement fabulaField( )
     {
         return $x( ".//textarea");
     }

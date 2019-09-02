@@ -5,9 +5,9 @@ import org.junit.Assert;
 
 public class SummaryFormAction {
 
-    public static void setPlot( String text )
+    public static void setFabula( String text )
     {
-        locators.SummaryFormLocator.plotTextareaField().setValue( text );
+        locators.SummaryFormLocator.fabulaTextareaField().setValue( text );
     }
 
     public static void setKuspNumber( String number )
@@ -25,9 +25,9 @@ public class SummaryFormAction {
         //todo не правильно названы переменные. Номер нужно указывать с типом дока, так как у нас очень много доков разных
         String number = locators.SummaryFormLocator.numberField().getValue();
         //todo не плот. Лучше пиши fabula
-        String plot   = locators.SummaryFormLocator.plotTextareaField().getValue();
+        String fabula   = locators.SummaryFormLocator.fabulaTextareaField().getValue();
 
         Assert.assertEquals( number, kusp.number() );
-        Assert.assertEquals( plot,   kusp.plot()   );
+        Assert.assertEquals( fabula,   kusp.fabula()   );
     }
 }

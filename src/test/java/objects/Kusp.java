@@ -16,7 +16,7 @@ public class Kusp {
     private String patronymic;
     private String phone;
     private Date   date;
-    private String plot;
+    private String fabula;
 
     private static String[] names = { "Иванов", "Петров", "Журавлев", "Попов", "Шатров", "Танеев", "Вырубов" };
 
@@ -28,11 +28,11 @@ public class Kusp {
 
         int index = generator.nextInt( names.length );
         String lastComplainantName = names[ index ];
-        String plot = "Фабула";
+        String fabula = "Фабула";
         String applicationForm = "Заявление";
 
         result.setLastName( lastComplainantName );
-        result.setPlot( plot );
+        result.setFabula( fabula );
         result.setApplicationForm( applicationForm );
 
         return result;
@@ -48,7 +48,7 @@ public class Kusp {
         this.patronymic         = null;
         this.phone              = null;
         this.date               = null;
-        this.plot               = null;
+        this.fabula               = null;
     }
 
     public void setNumber      ( String  newNumber     ) { this.number = newNumber;            }
@@ -59,7 +59,7 @@ public class Kusp {
     public void setPatronymic  ( String  newPatronymic ) { this.patronymic = newPatronymic;    }
     public void setPhone       ( String  newPhone      ) { this.phone = newPhone;              }
     public void setDate        ( Date    newDate       ) { this.date = newDate;                }
-    public void setPlot        ( String  newPlot       ) { this.plot = newPlot;                }
+    public void setFabula        ( String  newFabula       ) { this.fabula = newFabula;                }
 
     public void setApplicationForm   ( String  newCrimeForm  ) { this.applicationForm = newCrimeForm;      }
 
@@ -70,7 +70,7 @@ public class Kusp {
     public String patronymic        ( ) { return this.patronymic;       }
     public String phone             ( ) { return this.phone;            }
     public Date   date              ( ) { return this.date;             }
-    public String plot              ( ) { return this.plot;             }
+    public String fabula              ( ) { return this.fabula;             }
     public String applicationForm   ( ) { return this.applicationForm;  }
 
     public Boolean hasNumber    ( ) { return ( this.number != null );   }

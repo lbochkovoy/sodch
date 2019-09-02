@@ -20,7 +20,7 @@ public class VisibilityChecker {
     public static void checkKuspFormVisibility( )
     {
         locators.KuspFormLocator.numberField().shouldBe( Condition.visible );
-        locators.KuspFormLocator.plotField().shouldBe( Condition.visible );
+        locators.KuspFormLocator.fabulaField().shouldBe( Condition.visible );
         locators.KuspFormLocator.complainantFNameField().shouldBe( Condition.visible );
         locators.KuspFormLocator.complainantSNameField().shouldBe( Condition.visible );
         locators.KuspFormLocator.complainantPatronymicField().shouldBe( Condition.visible );
@@ -30,7 +30,7 @@ public class VisibilityChecker {
     public static void checkKuspFormInvisibility( )
     {
         locators.KuspFormLocator.numberField().shouldNotBe( Condition.visible );
-        locators.KuspFormLocator.plotField().shouldNotBe( Condition.visible );
+        locators.KuspFormLocator.fabulaField().shouldNotBe( Condition.visible );
         locators.KuspFormLocator.complainantFNameField().shouldNotBe( Condition.visible );
         locators.KuspFormLocator.complainantSNameField().shouldNotBe( Condition.visible );
         locators.KuspFormLocator.complainantPatronymicField().shouldNotBe( Condition.visible );
