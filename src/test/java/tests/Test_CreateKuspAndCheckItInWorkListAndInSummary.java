@@ -1,28 +1,26 @@
 package tests;
 
-import actions.MainToolboxAction;
 import com.codeborne.selenide.Configuration;
 import objects.Kusp;
-import org.jetbrains.annotations.NotNull;
+import objects.ParamsSetter;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 
-import java.io.*;
-import java.nio.charset.Charset;
 import java.util.*;
 
 import static com.codeborne.selenide.CollectionCondition.texts;
 import static com.codeborne.selenide.Selenide.*;
 
 @RunWith(Parameterized.class)
-public class TestClass {
+public class Test_CreateKuspAndCheckItInWorkListAndInSummary {
 
     //todo назови сценарий адекватно, чтобы из названия можно было понять что в нём происходит
     //todo при коммите обязательно пиши, что ты сделал и для чего. Коротко, иначе сам запутаешься
     //todo каждый метод распиши что делает через аннотацию Step () в библиотеке allure. Не используй Allure2
+
     @Parameterized.Parameters
     public static Collection<Object[]> data()
     {
@@ -53,14 +51,13 @@ public class TestClass {
     private String url;
 
     @Before
-
     public void setConfigurations()
     {
         Configuration.timeout = 30000;
         open( url );
     }
 
-    public TestClass( String login, String password, Kusp kusp, String url )
+    public Test_CreateKuspAndCheckItInWorkListAndInSummary( String login, String password, Kusp kusp, String url )
     {
         this.login = login;
         this.password = password;
