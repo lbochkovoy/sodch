@@ -51,11 +51,11 @@ public class VisibilityChecker {
     public static void checkSummaryFormVisibility( )
     {
         locators.SummaryFormLocator.numberField().shouldBe( Condition.visible );
-        locators.SummaryFormLocator.accidentAddressField().shouldBe( Condition.visible );
+        //locators.SummaryFormLocator.accidentAddressField().shouldBe( Condition.visible );
         locators.SummaryFormLocator.accidentDateField().shouldBe( Condition.visible );
         locators.SummaryFormLocator.accidentTimeField().shouldBe( Condition.visible );
         locators.SummaryFormLocator.accidentTypeField().shouldBe( Condition.visible );
-        locators.SummaryFormLocator.crimeTypeInputField().shouldBe( Condition.visible );
+        //locators.SummaryFormLocator.crimeTypeInputField().shouldBe( Condition.visible );
     }
 
     public static void checkSummaryFormInvisibility( )

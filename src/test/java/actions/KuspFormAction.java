@@ -35,8 +35,6 @@ public class KuspFormAction {
         locators.KuspFormLocator.boundList().shouldBe( Condition.visible );
         crimeForm.pressEnter();
 
-        sleep(100);
-
         return crimeForm.getValue();
     }
 

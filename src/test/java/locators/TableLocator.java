@@ -15,14 +15,14 @@ public class TableLocator {
 
     // Возвращает список с наименованиями видимых колонок
 
-    public static ElementsCollection visibleColumns() {
+    public static ElementsCollection columns() {
         String xpath = ".//div[@class='x-column-header-text-wrapper']//span";
         ElementsCollection resultElements = $$x( xpath );
-        return resultElements.filter(Condition.visible);
+        return resultElements;
     }
 
     public static int indexOfColumnWithName( String nameOfColumn ) {
-        ElementsCollection columnsOfTable = visibleColumns();
+        ElementsCollection columnsOfTable = columns().filter( Condition.visible );
         SelenideElement columnWithName = columnsOfTable.find( text(nameOfColumn) );
         int indexOfColumn = columnsOfTable.indexOf( columnWithName );
         return indexOfColumn;
@@ -42,9 +42,15 @@ public class TableLocator {
         return field;
     }
 
+    public static SelenideElement columnWithName( String name )
+    {
+        SelenideElement result = $x(".//div[ contains( @id, 'headercontainer' )]//span[text()='"+name+"']");
+        return result;
+    }
+
     public static SelenideElement element( int rowIndex, int columnIndex )
     {
-        return $x("//table["+(rowIndex+1)+"]//td["+(columnIndex+1)+"]");
+        return $x(".//div[ contains(@id, 'tableview')]//table["+(rowIndex+1)+"]//td["+(columnIndex+1)+"]");
     }
 
 }
